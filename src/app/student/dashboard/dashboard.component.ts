@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddStudentComponent } from '../../components/add-student/add-student.component';
 import { EditStudentComponent } from '../../components/edit-student/edit-student.component';
-import { Student } from ' ../../student';
+import { Student } from '../../student';
 import { StudentService } from '../../services/student.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   students: Student[] = [];
@@ -19,14 +19,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private modalService: NgbModal
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
     this.studentService.getAll().subscribe((students: Student[]) => {
       this.students = students;
-    }) 
+    });
   }
 
   hapus(id: string) {
@@ -37,40 +35,44 @@ export class DashboardComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.studentService.delete(id).subscribe(() => {
-          Swal.fire(
-            'Deleted!',
-            'Student has been deleted.',
-            'success'
-          )
-          const idx = this.students.findIndex(q => q._id === id);
+          Swal.fire('Deleted!', 'Student has been deleted.', 'success');
+          const idx = this.students.findIndex((q) => q._id === id);
           this.students.splice(idx, 1);
         });
       }
-    })
+    });
   }
 
   editModal(student: Student, id: string) {
-    const modal = this.modalService.open(EditStudentComponent, {centered: true, ariaLabelledBy: 'modal-basic-title'});
+    const modal = this.modalService.open(EditStudentComponent, {
+      centered: true,
+      ariaLabelledBy: 'modal-basic-title',
+    });
     modal.componentInstance.student = student;
-    modal.result.then(student => {
-      this.studentService.update(id, student)
-      .subscribe(student => {
-        const idx = this.students.findIndex(q => q._id === id);
-        this.students[idx] = {...this.students[idx], ...student};
-      });
-    }).catch(e => console.log(e));
+    modal.result
+      .then((student) => {
+        this.studentService.update(id, student).subscribe((student) => {
+          const idx = this.students.findIndex((q) => q._id === id);
+          this.students[idx] = { ...this.students[idx], ...student };
+        });
+      })
+      .catch((e) => console.log(e));
   }
 
   addModal() {
-    const modal = this.modalService.open(AddStudentComponent, {centered: true});
-    modal.result.then(student => {
-      this.studentService.create(student)
-      .subscribe(student => this.students.push(student));
-    }).catch(e => console.log(e));
+    const modal = this.modalService.open(AddStudentComponent, {
+      centered: true,
+    });
+    modal.result
+      .then((student) => {
+        this.studentService
+          .create(student)
+          .subscribe((student) => this.students.push(student));
+      })
+      .catch((e) => console.log(e));
   }
-
 }
