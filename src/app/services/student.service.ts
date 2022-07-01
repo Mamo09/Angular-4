@@ -9,7 +9,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiURL = 'https://untitled-21zslm4grf6y.runkit.sh/api'
+  private apiURL = environment.apiURL;
   
   httpOptions = {
     headers: new HttpHeaders({
