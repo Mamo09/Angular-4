@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: '../../api/index.js'
+  apiURL: 'https://untitled-ihcv2rpoell2.runkit.sh/api'
 };
 
 /*
