@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 
+import { ApiService } from '../../api/index';
+
 @NgModule({
   declarations: [
     AppComponent,
