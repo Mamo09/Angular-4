@@ -1,3 +1,6 @@
 # angular-ivy-qjunhq
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-qjunhq)
+Tugas kelompok 5
+191112130 - Futma Nurhidayat
+191110538 - Tommy Christian Siregar
+191110929 - Gideon Perdamaian Hulu
