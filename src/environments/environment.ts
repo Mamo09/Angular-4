@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://untitled-21zslm4grf6y.runkit.sh/api'
+  apiURL: 'https://untitled-21zslm4grf6y.runkit.sh/api/employees'
 };
 
 /*
