@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
